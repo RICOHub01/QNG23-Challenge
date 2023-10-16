@@ -3,7 +3,7 @@
 </p>
 
 # Problem Brief
-Download: [DOCX](/assets/docs/QNG23%20Problem%20brief_v1.0.docx) | [PDF]()
+Download: [PDF](/assets/docs/QNG23%20Problem%20brief.pdf)
 
 ## Introduction
 1. This brief:
@@ -34,11 +34,11 @@ where $` C=\frac{μ_0}{4π} \sim 10^{-7} \ T.m/A `$ is a constant, $` \vec r `$ 
 
 <img src="/assets/images/figure-1.png" width="90%"/>
 
-> Figure 1: Example magnetic field in the $`B_{up}`$ direction and lattice coordinate system in Eastings and Northings. Mine locations are marked with a red x.
+> Figure 1: Example magnetic field in the $` B_{up} `$ direction and lattice coordinate system in Eastings and Northings. Mine locations are marked with a red x.
 
 <img src="/assets/images/figure-2.png" width="90%"/>
 
-> Figure 2: Same data as Figure 1 showing all three vector directions of $`\vec B`$. Grid lines have been removed for clarity.
+> Figure 2: Same data as Figure 1 showing all three vector directions of $` \vec B `$. Grid lines have been removed for clarity.
 12. Time has been divided into discrete steps of 10 s. The drone is considered to instantaneously hop between lattice squares, where it dwells for at least one time step.
 13. In stages 1 and 2, the magnetic images supplied have been created by assuming a surveying flight pattern (see Figure 3), where the drone has moved one lattice square at a time and dwells one time step in each lattice square.
 

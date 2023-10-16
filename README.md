@@ -15,28 +15,27 @@ The following document is the hub that will contain:
 - Uploads of the Q&A sessions and the leaderboard as we advance through the challenge
 
 # Table of Contents
-- 🎞️ Challenge Material
+- Challenge Material
     - [Video Briefing](https://vimeo.com/869440571/e058164ca5?share=copy)
     - [Challenge Instructions](/assets/docs/QNG23%20Challenge%20instructions.pdf)
-    - [Problem Brief](/assets/docs/PROBLEM-BRIEF.md)
+    - [Problem Brief](/assets/docs/QNG23%20Problem%20brief.pdf)
     - [Merch Form](https://forms.office.com/Pages/ResponsePage.aspx?id=GU5i_LU-u0uHril7jkukjXwnWWTBCM5Gk5WyPCsZZjVUNUVDNENZUTNWSzlBU0hJU1hUTVI1TlI5Vi4u)
-    - [Q&A](CHALLENGE-CONTENT.md#q&a)
-- 🛠️[Technical Guidance](#technical-manual)
+    - Q&A
+- Technical Guidance
     - [Installation](#installation)
-    - [Documentation](#documentation)
-    - [Advanced Programming](#advanced-programming)
+    - [Software Dependenies](#software-dependencies)
+- [Communication](#communication)
 - Challenge Stages
     - [Stage 0](/STAGE-1.md) - Ends 12pm, Wednesday 26 October
     - [Stage 1](/STAGE-1.md) - 12pm Thursday, 26 October to 12pm Saturday, 28 October
     - Stage 2 - 12pm Thursday, 9 November to 12pm Saturday, 11 November
     - Stage 3 - 12pm Thursday, 23 November to 12pm Saturday, 25 November
-- [Communication](#communication)
 
-# Technical Manual
+# Technical Guidance
 
 Python Version Required: `3.9+` 
 
-## Installation Process
+## Installation
 This GitHub repository will act as the framework for the challenge, as we advance through the stages of the challenge new documentation and code will be added to the repository and old code will be archived away into folders.
 
 In addition, test datasets are made available through the Releases page along with zipped versions of the code for each stage.
@@ -79,6 +78,6 @@ Create an [issue](https://github.com/RICOHub01/QNG23-Challenge/issues)
 
 Send an email to [support@quantumnextgen.com.au](mailto:support@quantumnextgen.com.au)
 
-Attend a Q&A on 18th Oct, 17:00 at 
+Attend a Q&A on 18th Oct, 17:00 at (Insert Teams Link Here)
 
 Join Signal and chat in our [challenge group](https://signal.group/#CjQKIAB9t0m64V4PAwYP1NYVtYfAkoUx6DoRGidCKUoM11qMEhD4wyk4hU6KsNz0ZTT2V8EW)

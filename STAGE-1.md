@@ -34,6 +34,10 @@ Some datasets will have the attribute "mine_position", which returns an Nx2 arra
 
 # Training
 
+In order to complete the challenge you will be required to look and use training data. 
+
+## Documentation
+
 ### `load_dataset(filename, scenario)`
 
 Open up the provided dataset and retrieve from the specified scenario (ranging from 0-999) the 3x101x101 magnetic field dataset as well as 3x1 magnetic dipole.
@@ -87,6 +91,8 @@ Before 12pm, Wednesday 26 October, you will be required to demonstrate your part
 
 You will demonstrate this by using the `submit_answers()` function to submit the mine locations for the training data to our server. This hurdle has been implemented to ensure you can proceed to **Stage 1** without issue and minimise risk when in the timed components of the challenge.
 
+## Documentation
+
 ### `submit_answers(mine_estimates, stage, authkey)`
 
 Provide an array of 1000xNx2 as estimates/answers for the locations of mines in the training set, along with an authkey to prove which team is submitting these answers.
@@ -111,13 +117,13 @@ print(response)
 # Stage 1
 
 Stage 1 will comprise of three steps.
-1. Downloading a new set of test data from https://sim.quantumnextgen.com.au/1/`<authkey>`
+1. Downloading a new set of test data from https://sim.quantumnextgen.com.au/1/`authkey`
 2. Running your solution over the test data and producing an answer for all 1000 elements.
 3. Submitting that answer to our servers using the same method as Stage 0, by running the `submit_answers()` function.
 
 Note: 
 1. This is an assessed component and thus will not have `load_answers()` available for the test dataset.
-2. This is a timed component and thus once the dataset is downloaded from https://sim.quantumnextgen.com.au/1/`<authkey>` you will have **two hours** to run `submit_answers()` with your answers.
+2. This is a timed component and thus once the dataset is downloaded from https://sim.quantumnextgen.com.au/1/`authkey` you will have **two hours** to run `submit_answers()` with your answers.
 
 ### `load_dataset(filename, scenario)`
 
@@ -141,7 +147,6 @@ print(dipole)
 
 >>> [0.00018855036263420348,0.003962972901521309,0.005057922910620125]
 ```
-
 
 ### `submit_answers(mine_estimates, stage, authkey)`
 
