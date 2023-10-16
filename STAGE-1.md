@@ -5,13 +5,13 @@
 # Stage 0 & 1
 
 
-As per the problem brief:
+**As per the problem brief**
 
 Your task is to develop a method for analysing magnetic field images that identifies all of the land mines in a scenario and locates them with the greatest possible precision. You need to demonstrate this method by developing software that implements it automatically. You will be given the magnetic field images and corresponding locations of land mines for 1000 scenarios so that you can develop your method and software. Your solution will then be tested by you being provided with the magnetic field images of 1000 scenarios and being asked to return the locations of the land mines in each scenario. You will have two hours from receiving the test scenarios to return your results. If you do not locate all land mines in a scenario, then it does not count towards your score $` (N_{est} < N_{mines}) `$ . If you locate more than 110% the total number of mines, then it does not count towards your score $` (N_{est} > 1.1 × N_{mines}) `$ . If you find the correct number withing the 10% false positive limit, then the precision of your locating will be calculated by the Hausdorff distance from the set of true mine positions to your estimates (smaller is better).
 
 ---
 
-There are three major components to this; Training, Stage 0, and Stage 1.
+There are three major components to this in the first two weeks; Training, Stage 0, and Stage 1.
 
 [Training](#training) is completed offline, and uses the provided training dataset, along with functions `load_dataset()` and `load_answers()`.
 
@@ -25,15 +25,68 @@ There are three major components to this; Training, Stage 0, and Stage 1.
 
 Datasets are stored as hdf5 files.
 
-Each of these hdf5 Datasets contains individual scenarios denoted 'D0000' through to 'D1000'
+Each of these hdf5 datasets contains individual scenarios denoted 'D0000' through to 'D1000'
 
 ### Magnetic Field
 
-The primary data is a 3x101x101 double of magnetic field values where the first dimension is the vector field direction ordered in East, North and Up, and the remaining two dimensions are Eastings and Northings
+The primary data is a 3x101x101 double of magnetic field values where the first dimension is the vector field direction ordered in East, North and Up, and the remaining two dimensions are Eastings and Northings.
 
 i.e. `data[2,:,:]` is the two dimensional B<sub>up</sub> data.
 
 & `data[2,10,40]` is the B<sub>up</sub> data at Eastings 10m, Northings 40m
+
+```python
+Magnetic_Field=[
+  B_east=[
+    Easting_0=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_1=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_2=[Northing_0, Northing_1, Northing_2... Northing_1000]
+    ...
+    Easting_1000=[Northing_0, Northing_1, Northing_2... Northing_1000]
+  ],
+  B_north=[
+    Easting_0=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_1=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_2=[Northing_0, Northing_1, Northing_2... Northing_1000]
+    ...
+    Easting_1000=[Northing_0, Northing_1, Northing_2... Northing_1000]
+  ],
+  B_up=[
+    Easting_0=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_1=[Northing_0, Northing_1, Northing_2... Northing_1000],
+    Easting_2=[Northing_0, Northing_1, Northing_2... Northing_1000]
+    ...
+    Easting_1000=[Northing_0, Northing_1, Northing_2... Northing_1000]
+  ]
+]
+```
+```python
+[
+  [
+    [2.494e-14, −1.260e-13, −9.290e-16... −1.001e-14],
+    [9.3936e-14, −1.6723e-15, 2.9003e-13... −2.165e-13],
+    [−1.7494e-13, −4.8814e-13, 2.6513e-14... −1.4874e-13]
+    ...
+    [−2.6981e-13, 4.8392e-14, 2.3269e-13... −7.9502e-14]
+  ],
+  [
+    [5.9242e-14, −9.0429e-14, 1.047e-13... −2.6437e-14],
+    [−4.1591e-13, −1.5082e-13, −1.7875e-13... −1.5819e-13],
+    [2.2981e-13, −2.3813e-13, 2.9374e-13... −1.4208e-14]
+    ...
+    [7.6692e-14, 1.9518e-13, −3.2368e-13... 1.5126e-13]
+  ],
+  [
+    [2.6914e-13, −1.4688e-13, 3.7836e-13... 2.7123e-13],
+    [1.2353e-13, −3.1824e-14, 5.3224e-14... 2.0195e-13],
+    [−1.5399e-13, −9.9873e-14, 3.201e-13... 7.8072e-14]
+    ...
+    [−7.5997e-14, −2.1137e-14, −1.9027e-13... 1.0032e-14]
+  ]
+]
+```
+
+
 
 ### Dipole
 
