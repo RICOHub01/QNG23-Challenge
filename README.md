@@ -38,13 +38,15 @@ Python Version Required: `3.9+`
 ## Installation
 This GitHub repository will act as the framework for the challenge, as we advance through the stages of the challenge new documentation and code will be added to the repository and old code will be archived away into folders.
 
-In addition, test datasets are made available through the Releases page along with zipped versions of the code for each stage.
+In addition, the datasets are made available through the Releases page along with zipped versions of the code for each stage. 
+
+You can find the most recent version here: [![GitHub release](https://img.shields.io/github/release/ricohub01/qng23-challenge.svg)](https://GitHub.com/ricohub01/qng23-challenge/releases/)
 
 This challenge package can be imported into any custom python script using the standard `import` feature. The documentation for each stage will outline the functions you need to call to complete challenge actions, as well as providing explanations about their parameters, their returns, and their role in the challenge.
 
 ### Example
 
-At it's most barebones, a Team folder for the challenge might look like so:
+At its most barebones, a Team folder for the challenge might look like so:
 ```bash
 example-qng23-team-solution-folder
 |   qng23-solution.py
