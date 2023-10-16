@@ -4,7 +4,6 @@
 
 # Stage 0 & 1
 
-## Introduction
 
 As per the problem brief:
 
@@ -26,7 +25,9 @@ There are three major components to this; Training, Stage 0, and Stage 1.
 
 Datasets are stored as hdf5 files.
 
-These hdf5 Datasets contain individual scenarios denoted 'D0000' through to 'D1000'
+Each of these hdf5 Datasets contains individual scenarios denoted 'D0000' through to 'D1000'
+
+### Magnetic Field
 
 The primary data is a 3x101x101 double of magnetic field values where the first dimension is the vector field direction ordered in East, North and Up, and the remaining two dimensions are Eastings and Northings
 
@@ -34,13 +35,71 @@ i.e. `data[2,:,:]` is the two dimensional B<sub>up</sub> data.
 
 & `data[2,10,40]` is the B<sub>up</sub> data at Eastings 10m, Northings 40m
 
--------------------------
+### Dipole
 
 Each scenario also contains attributes.
 
-The attribute "mine_dipole" returns a three-element array with the mine dipole moment in the East, North, Up directions in units of A.m<sup>2</sup>.
+The attribute `mine_dipole` returns a three-element array with the mine dipole moment in the East, North, Up directions in units of A.m<sup>2</sup>.
 
-Some datasets will have the attribute "mine_position", which returns an Nx2 array with the first dimension elements being mines and the second dimension corresponding to the East position followed by the North positions of the mine in meters.
+```python
+Mine_Dipole=[Dipole_East, Dipole_North, Dipole_Up]
+```
+```python
+[0.0004630278750465468,0.0035182684827414416,0.005924872028923108]
+```
+
+### Mine Positions
+
+Some datasets will have the attribute `mine_position`, which returns an Nx2 array with the first dimension elements being mines and the second dimension corresponding to the East position followed by the North positions of the mine in meters.
+```python
+Mine_Positions=[
+  Mine_Eastings=[Mine1Easting=Double, Mine2Easting=Double, Mine3Easting=Double...],
+  Mine_Northings=[Mine1Northing=Double, Mine2Northing=Double, Mine3Northing=Double...]
+]
+```
+```python
+[
+  [43.5456494880132,36.53926520147979,25.795604598985733,26.00725731020625,46.76380398701235,74.40935689205949,12.049736709577994,63.67528622219915,37.49943911758203,56.22751172065548,85.25082496219667,31.170562839713014,16.191380764031933,25.171771904128786,89.69654170791354],
+  [42.88782514723049,63.02067125739154,84.62348991078048,38.23093548135795,86.34782302696689,48.99359079854869,12.257964403937498,35.4795505232131,16.856852683598085,19.26167625528886,20.890465106294087,72.90019680446693,64.79048887962827,13.513603935151961,36.62536487289766]
+]
+```
+
+## Answers
+
+Is an advanced configuration of [mine positions](#mine-positions), stacking 1000 instances of the datatype into a single array to represent answers for the entire dataset.
+
+```python
+Answers=[
+  Scenario1_Mine_Positions[
+    Mine_Eastings=[Mine1Easting=Double, Mine2Easting=Double, Mine3Easting=Double...],
+    Mine_Northings=[Mine1Northing=Double, Mine2Northing=Double, Mine3Northing=Double...]
+  ],
+  Scenario2_Mine_Positions[
+    Mine_Eastings=[Mine1Easting=Double, Mine2Easting=Double, Mine3Easting=Double...],
+    Mine_Northings=[Mine1Northing=Double, Mine2Northing=Double, Mine3Northing=Double...]
+  ],
+  Scenario3_Mine_Positions[
+    Mine_Eastings=[Mine1Easting=Double, Mine2Easting=Double, Mine3Easting=Double...],
+    Mine_Northings=[Mine1Northing=Double, Mine2Northing=Double, Mine3Northing=Double...]
+  ]
+]
+```
+```python
+[
+  [
+    [43.5456494880132,36.53926520147979,25.795604598985733,26.00725731020625,46.76380398701235,74.40935689205949,12.049736709577994,63.67528622219915,37.49943911758203,56.22751172065548,85.25082496219667,31.170562839713014,16.191380764031933,25.171771904128786,89.69654170791354],
+    [42.88782514723049,63.02067125739154,84.62348991078048,38.23093548135795,86.34782302696689,48.99359079854869,12.257964403937498,35.4795505232131,16.856852683598085,19.26167625528886,20.890465106294087,72.90019680446693,64.79048887962827,13.513603935151961,36.62536487289766]
+  ],
+  [
+    [36.261589206639215,86.50870571114635,43.46404467423455,22.653871151375036,62.58911552054529],
+    [39.677616523499005,17.306013595479676,78.16553176036737,56.856900495052784,76.59495000471011]
+  ],
+  [
+    [12.706235345527581,84.50917866228248,60.04606855352944,73.92687528518418,86.77987788590254],
+    [55.909907295786056,31.39735602118308,17.198804284971196,35.7049710365495,74.345123410448]
+  ]
+]
+```
 
 # Training
 
@@ -127,13 +186,13 @@ print(response)
 # Stage 1
 
 Stage 1 will comprise of three steps.
-1. Downloading a new set of test data from https://sim.quantumnextgen.com.au/1/`authkey`
+1. Downloading a new set of test data from https://sim.quantumnextgen.com.au/1/{authkey}
 2. Running your solution over the test data and producing an answer for all 1000 elements.
 3. Submitting that answer to our servers using the same method as Stage 0, by running the `submit_answers()` function.
 
 Note: 
 1. This is an assessed component and thus will not have `load_answers()` available for the test dataset.
-2. This is a timed component and thus once the dataset is downloaded from https://sim.quantumnextgen.com.au/1/`authkey` you will have **two hours** to run `submit_answers()` with your answers.
+2. This is a timed component and thus once the dataset is downloaded from https://sim.quantumnextgen.com.au/1/{authkey} you will have **two hours** to run `submit_answers()` with your answers.
 
 ### `load_dataset(filename, scenario)`
 
