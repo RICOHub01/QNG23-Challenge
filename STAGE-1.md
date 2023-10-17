@@ -217,12 +217,12 @@ You will demonstrate this by using the `submit_answers()` function to submit the
 
 ### `submit_answers(mine_estimates, stage, authkey)`
 
-Provide an array of 1000xNx2 as estimates/answers for the locations of mines in the training set, along with an authkey to prove which team is submitting these answers.
-The stage variable is provided to ensure that the answers are being submitted for the correct assessed dataset.
+Provide an array of 1000xNx2 as estimates/answers for the locations of mines in the training set, along with an `authkey` to prove which team is submitting these answers.
+The `stage` argument is provided to ensure that the answers are being submitted for the correct assessed dataset.
 
 #### Example:
 
-Submit an part of an array of mine_estimates for Stage 0, using authkey "Ty87nB".
+Submit an part of an array of `mine_estimates` for Stage 0, using `authkey` `"Ty87nB"`.
 
 ```python
 import qe_minesweeper

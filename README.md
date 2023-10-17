@@ -76,10 +76,14 @@ python -m pip install h5py
 
 # Communication
 
-Create an [issue](https://github.com/RICOHub01/QNG23-Challenge/issues)
+Create an [issue  on GitHub](https://github.com/RICOHub01/QNG23-Challenge/issues)
 
 Send an email to [support@quantumnextgen.com.au](mailto:support@quantumnextgen.com.au)
 
-Attend a Q&A on 18th Oct, 17:00 at (Insert Teams Link Here)
+Attend a Q&A on 18th Oct, 17:00 via [Microsoft Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGRiYzJlY2EtNjMxYi00MDhmLTkzMTYtZWUwMDU5MmMxZTg2%40thread.v2/0?context=%7b%22Tid%22%3a%22fc624e19-3eb5-4bbb-87ae-297b8e4ba48d%22%2c%22Oid%22%3a%22b289bda4-4d17-4592-9e22-17a7e487686b%22%7d)
+
+> Meeting ID: 452 315 051 573 \
+> Passcode: zsiqGp
+
 
 Join Signal and chat in our [challenge group](https://signal.group/#CjQKIAB9t0m64V4PAwYP1NYVtYfAkoUx6DoRGidCKUoM11qMEhD4wyk4hU6KsNz0ZTT2V8EW)
