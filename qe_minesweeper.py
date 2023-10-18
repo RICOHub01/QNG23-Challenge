@@ -26,7 +26,7 @@ def load_answers(filename,scenario):
     #Will only work on training data 
     hf = h5py.File(filename,'r')
     subset = 'D%04d' % scenario #format is D0000 upt to 1000
-    mine_positons = hf.get(subset).attrs['mine_position']
+    mine_positons = hf.get(subset).attrs['mine_position'].tolist()
     hf.close()
     return mine_positons
 
@@ -35,7 +35,7 @@ def submit_answers(mine_estimates, stage, authkey):
     payload = {"answers":mine_estimates}
     
     #sends data to site, stores in variable r
-    r = post_to_server(payload, (stage + "/" + authkey))
+    r = post_to_server(payload, (str(stage) + "/" + authkey))
     if r.status_code != 200:
         raise Exception(r.text)
     else:
