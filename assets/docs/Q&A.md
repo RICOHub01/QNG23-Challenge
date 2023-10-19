@@ -4,10 +4,9 @@
 
 # Questions and Answers Session 1 - 18 Oct 2023
 
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/875780730?h=0cee27f56d&amp;badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="QNG23 Q&amp;A Session 1 - 18 Oct 2023"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-<br>
+You can watch the [recording here](https://vimeo.com/875780730/0cee27f56d?share=copy)
 
-[Link to the Q&A](https://vimeo.com/875780730/0cee27f56d?share=copy)
+[![Link](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/88e5359f-0aa3-4a95-9e9b-66d07673250d.gif?ClientID=vimeo-core-prod&Date=1697684710&Signature=4280138a1de9947efbfc9cdeab03263848212cc9)](https://vimeo.com/875780730/0cee27f56d?share=copy)
 
 # Questions and Answers Session 2 - 1 Nov 2023
 
