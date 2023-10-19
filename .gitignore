@@ -130,6 +130,7 @@ venv.bak/
 
 # Project Specific for QNG
 **/datasets/**
+**/.DS_Store
 
 # Spyder project settings
 .spyderproject
