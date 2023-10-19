@@ -129,7 +129,7 @@ env.bak/
 venv.bak/
 
 # Project Specific for QNG
-datasets/
+**/datasets/**
 
 # Spyder project settings
 .spyderproject
