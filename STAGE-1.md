@@ -249,6 +249,45 @@ print(response)
 >>> "Error, answer does not contain 1000 scenarios"
 ```
 
+### `estimate_check(mine_positions, mine_estimates)`
+
+Each input is a 2xN array where 2 is the East direction or North direction of the mines, and N is the number of mines/estimates.
+
+ie. `mine_estimates[0]` = All the East directions of the mines \
+ie. `mine_estimates[1]` = All the North directions of the mines \
+ie. `mine_estimates[0][n]` & `mine_estimates[1][n]` = The East and North direction of mine n.
+
+The first input of the function is the true known mine positions retrieved from a scenario in the dataset.
+The second input of the function is the estimates of mine positions for the same scenario.
+
+Each input can have a diferent N.
+
+This function returns as `False` if the estimated number of mines is outside the accepted 100%-110% range.
+
+Otherwise this function returns the Hausdorff distance in meters as a `double`.
+
+#### Example:
+
+Submit the `mine_positions` for `stage1_training_data.h5` and my own `mine_estimates` for scenario `9`, and recieve their Hausdorff distance in meters.
+
+```python
+import qe_minesweeper
+
+mine_positions = qe_minesweeper.load_answers('stage1_training_data.h5',9)
+
+our_estimates = [
+  [43.5456494880132,36.53926520147979,25.795604598985733,26.00725731020625,46.76380398701235,74.40935689205949,12.049736709577994,63.67528622219915,37.49943911758203,56.22751172065548,85.25082496219667,31.170562839713014,16.191380764031933,25.171771904128786,89.69654170791354],
+  [42.88782514723049,63.02067125739154,84.62348991078048,38.23093548135795,86.34782302696689,48.99359079854869,12.257964403937498,35.4795505232131,16.856852683598085,19.26167625528886,20.890465106294087,72.90019680446693,64.79048887962827,13.513603935151961,36.62536487289766]
+]
+
+result = qe_minesweeper.estimate_check(mine_positions, our_estimates)
+
+print(result)
+
+>>> 156.67916589066107
+```
+
+
 # Stage 1
 
 Stage 1 will comprise of three steps.
