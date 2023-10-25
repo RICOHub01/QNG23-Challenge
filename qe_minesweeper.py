@@ -32,6 +32,8 @@ def load_answers(filename,scenario):
 
 def submit_answers(mine_estimates, stage, authkey):
 
+    mine_estimates = serialize_array(mine_estimates)
+
     #creates JSON form data for HTTP request
     payload = {"answers":mine_estimates}
     
@@ -68,3 +70,17 @@ def estimate_check(mine_positions,mine_estimates):
 
 def post_to_server(payload, ref=""):
         return requests.post(URL+ref, json=payload, headers={'QeC':QEC})
+
+def serialize_array(array):
+    print(array)
+    output = []
+    for i in array:
+        print(i)
+        if isinstance(i, np.ndarray):
+            i.tolist()
+            output.append(serialize_array(i))
+        elif isinstance(i, list):
+            output.append(serialize_array(i))
+        else:
+            output.append(i)
+    return output
