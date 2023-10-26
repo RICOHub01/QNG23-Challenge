@@ -2,8 +2,17 @@
   <img src="https://github.com/rdc-mitchell/qng23-challenge/blob/main/assets/images/Header.jpg?raw=true" alt="header"/>
 </p>
 
-# Stage 0 & 1
+# Stage 1 is now live
 
+[Link](#stage-1) to the section below
+
+NOTE: ONCE YOU DOWNLOAD THE TEST DATA YOU WILL HAVE TWO HOURS TO SUBMIT IT FOR VALID ENTRY
+
+You can download your test dataset by modifying the following link with your team's authkey https://sim.quantumnextgen.com.au/1/{authkey} 
+
+When running the `submit_answers()` function, make sure to change the stage parameter from 0 to 1.
+
+# Stage 0 & 1
 
 **As per the problem brief**
 
