@@ -21,6 +21,7 @@ The following document is the hub that will contain:
     - [Problem Brief](/assets/docs/QNG23%20Problem%20brief.pdf)
     - [Merch Form](https://forms.office.com/Pages/ResponsePage.aspx?id=GU5i_LU-u0uHril7jkukjXwnWWTBCM5Gk5WyPCsZZjVUNUVDNENZUTNWSzlBU0hJU1hUTVI1TlI5Vi4u)
     - [Q&A](/assets/docs/Q&A.md)
+    - [Leaderboard](/assets/docs/LEADERBOARD.md)
 - Technical Guidance
     - [Installation](#installation)
     - [Software Dependenies](#software-dependencies)
