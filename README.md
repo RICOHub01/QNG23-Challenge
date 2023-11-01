@@ -29,7 +29,7 @@ The following document is the hub that will contain:
 - Challenge Stages
     - [Stage 0](/STAGE-1.md) - Ends 12pm, Wednesday 26 October
     - [Stage 1](/STAGE-1.md) - 12pm Thursday, 26 October to 12pm Saturday, 28 October
-    - Stage 2 - 12pm Thursday, 9 November to 12pm Saturday, 11 November
+    - [Stage 2](/STAGE-2.md) - 12pm Thursday, 9 November to 12pm Saturday, 11 November
     - Stage 3 - 12pm Thursday, 23 November to 12pm Saturday, 25 November
 
 # Technical Guidance
