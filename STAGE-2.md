@@ -4,12 +4,6 @@
 
 # Stage 2
 
-**As per the problem brief**
-
-Your task is to develop a method for analysing magnetic field images that identifies all of the land mines in a scenario and locates them with the greatest possible precision. You need to demonstrate this method by developing software that implements it automatically. You will be given the magnetic field images and corresponding locations of land mines for 1000 scenarios so that you can develop your method and software. Your solution will then be tested by you being provided with the magnetic field images of 1000 scenarios and being asked to return the locations of the land mines in each scenario. You will have two hours from receiving the test scenarios to return your results. If you do not locate all land mines in a scenario, then it does not count towards your score $` (N_{est} < N_{mines}) `$ . If you locate more than 110% the total number of mines, then it does not count towards your score $` (N_{est} > 1.1 × N_{mines}) `$ . If you find the correct number withing the 10% false positive limit, then the precision of your locating will be calculated by the Hausdorff distance from the set of true mine positions to your estimates (smaller is better).
-
----
-
 There are two major components to this in third and fourth weeks of the challenge; Training, and Stage 2.
 
 [Training](#training) is completed offline, and uses the provided training dataset, along with functions `load_dataset()` and `load_answers()`.
