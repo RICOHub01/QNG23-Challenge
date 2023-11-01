@@ -8,7 +8,7 @@ There are two major components to this in third and fourth weeks of the challeng
 
 [Training](#training) is completed offline, and uses the provided training dataset, along with functions `load_dataset()` and `load_answers()`.
 
-[Stage 1](#stage-2) combines both elements, a fresh set of data and a time constraint. You will download a test dataset and use `load_dataset()` and `submit_answers()` to complete the stage and be scored against other teams.
+[Stage 2](#stage-2) combines both elements, a fresh set of data and a time constraint. You will download a test dataset and use `load_dataset()` and `submit_answers()` to complete the stage and be scored against other teams.
 
 # Formatting
 
