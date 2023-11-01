@@ -10,6 +10,8 @@ You can watch the [recording here](https://vimeo.com/875780730/0cee27f56d?share=
 
 # Questions and Answers Session 2 - 1 Nov 2023
 
-You can watch the recording soon.
+You can watch the [recording here](https://vimeo.com/880128963/396c074efe?share=copy).
+
+[![Link](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/5633a12c-226a-45a2-9a61-84ef74a34339.gif?ClientID=vimeo-core-prod&Date=1698841244&Signature=337888769f1189f5786364df04fbc2eb73e681c4)](https://vimeo.com/880128963/396c074efe?share=copy)
 
 Document referenced by Marcus at the end of Q&A Session 2 - [Magnetic field of a point dipole.pdf](/assets/docs/Magnetic%20field%20of%20a%20point%20dipole.pdf)
