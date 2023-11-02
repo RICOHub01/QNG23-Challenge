@@ -101,6 +101,13 @@ def plot_data(data, mine_position):
     cb.set_label(label='B (Tesla)')
     plt.show()
 
+def plot_scenario(source, scenario):
+    (data, dipole) = load_dataset(source, scenario)
+    try:
+        mine_positions = load_answers(source,scenario)
+    except:
+        mine_positions = [[],[]]
+    plot_data(data, mine_positions)
 
 def post_to_server(payload, ref=""):
         return requests.post(URL+ref, json=payload, headers={'QeC':QEC})
