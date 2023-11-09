@@ -2,6 +2,14 @@
   <img src="https://github.com/rdc-mitchell/qng23-challenge/blob/main/assets/images/Header.jpg?raw=true" alt="header"/>
 </p>
 
+# Stage 2 is now live
+
+NOTE: ONCE YOU DOWNLOAD THE TEST DATA YOU WILL HAVE TWO HOURS TO SUBMIT IT FOR VALID ENTRY
+
+You can download your test dataset by modifying the following link with your team's authkey https://sim.quantumnextgen.com.au/2/{authkey} 
+
+When running the `submit_answers()` function, make sure to change the stage parameter from 0 or 1 to 2.
+
 # Stage 2
 
 There are two major components to this in third and fourth weeks of the challenge; Training, and Stage 2.
