@@ -131,6 +131,7 @@ venv.bak/
 # Project Specific for QNG
 **/datasets/**
 **/.DS_Store
+**/testing/**
 
 # Spyder project settings
 .spyderproject

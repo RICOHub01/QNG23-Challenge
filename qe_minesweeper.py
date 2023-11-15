@@ -2,7 +2,7 @@ import requests
 import numpy as np
 import h5py
 
-QEC = "1.0.0" # Version number for challenge, can check with site for compatability, will provide appropriate error message when different to server to help communicate with teams that urgent updates are needed
+QEC = "3.0.0" # Version number for challenge, can check with site for compatability, will provide appropriate error message when different to server to help communicate with teams that urgent updates are needed
 URL = "https://sim.quantumnextgen.com.au/"
 
 def load_dataset(filename,scenario):
@@ -33,7 +33,6 @@ def load_answers(filename,scenario):
 def submit_answers(mine_estimates, stage, authkey):
 
     mine_estimates = serialize_array(mine_estimates)
-
     #creates JSON form data for HTTP request
     payload = {"answers":mine_estimates}
     
@@ -125,3 +124,103 @@ def serialize_array(array):
         else:
             output.append(i)
     return output
+
+# 
+def survey_flight(filename, scenario):
+    dr = Drone_Sim(scenario, filename)
+    survey_path(dr)
+    #shape array for 2d plotting
+    bx = np.reshape(dr.b_east_drone, (101, 101)).T
+    by = np.reshape(dr.b_north_drone, (101, 101)).T
+    bz = np.reshape(dr.b_up_drone, (101, 101)).T
+    #flip every 2nd row (raster back and forth flight)
+    bx[:,1::2] = bx[::-1, 1::2]
+    by[:,1::2] = by[::-1, 1::2]
+    bz[:,1::2] = bz[::-1, 1::2]
+    return [bx, by, bz]
+
+# 
+def survey_path(drone):
+    for i in range(drone.Borders[0],drone.Borders[1]):
+        for k in range(drone.Borders[0],drone.Borders[1]):
+            #we already have the 00 point
+            if i==0 and k==0:
+                continue
+            #traveling back down the grid on odd k's
+            if (i % 2) == 0:
+                j = k
+            else:
+                j = 100-k
+            drone.move(i,j)
+
+# For brute force re-organisation
+def reorg_dronedata(drone):
+    east = np.empty((101,101), dtype=float)
+    north = np.empty((101,101), dtype=float)
+    up = np.empty((101,101), dtype=float)
+    for i in range(drone.time_step):
+        e = drone.position_East[i]
+        n = drone.position_North[i]
+        east[e][n] = drone.b_east_drone[i]
+        north[e][n] = drone.b_north_drone[i]
+        up[e][n] = drone.b_up_drone[i]
+    return [east, north, up]
+
+class Drone_Sim: # Capitalised to meet style guidelines.
+    # CLASS VARIABLES
+    start_Position_East = [0] # Determine where on Eastings the drone starts
+    start_Position_North = [0] # Determine where on Northings the drone starts
+    start_time_step = 0 # Determine what timestep the drone starts on
+    
+    Borders =[0,101] # Set borders of the area
+    max_velovity = 0.283*10 # maximum velocity permitted per timestep
+    
+    #noise_mag = 0.3e-12 total magnitude (T)
+    #sensor_noise = ((noise_mag**2)/3)**0.5
+    sensor_noise = 1.7320508e-13
+    
+    Dataset = '\dataset_location.h5'
+
+    def __init__(self, scenario_number, dataset_location): #changed to regular init Class, set dataset_location to optional
+        # INSTANCE VARIABLES 
+        (self.data, self.mine_dipole) = load_dataset(dataset_location,scenario_number) # loads specific scenario data
+        self.position_East = [0] # sets starting east position
+        self.position_North = [0] # sets starting north position
+        self.time_step = self.start_time_step # set time step for scenario to 0
+        self.b_east_drone = [] # Array for tracking reading at point in East
+        self.b_north_drone = [] # Array for tracking reading at point in North 
+        self.b_up_drone = [] # Array for tracking reading at point in Up
+
+        self.perform_read() #Get the starting reading for 0,0
+
+    def perform_read(self):
+        b = self.data[:,self.position_East[-1],self.position_North[-1]] # for all three axis, get the reading at the last position (most recent) in East and North
+        b=np.squeeze(b) #Pop out what we need
+        noise_array = np.random.normal(0, self.sensor_noise,b.size) # Create a normalised noise reading for the three axis
+        b_noise = np.sum(np.column_stack((b,noise_array)),axis=1) # Sum the noise to the true reading # consider b + noise_array, since we are adding matrixes
+        self.b_east_drone.append(b_noise[0]) # Get noisified reading for east
+        self.b_north_drone.append(b_noise[1]) # Get the noisified reading for north
+        self.b_up_drone.append(b_noise[2]) # Get the noisified reading for up
+        return b_noise
+
+    def move(self, pos_east, pos_north):
+        if pos_east > self.Borders[1] or pos_east < self.Borders[0] or pos_north > self.Borders[1] or pos_north < self.Borders[0]:
+            #position outside bounds
+            raise Exception("position exceeds bounds")
+            return False
+        if pos_east%1>0 or pos_north%1>0:
+            #position not an integer
+            raise Exception("position exceeds bounds")
+            return False 
+        if abs(self.position_East[-1]-pos_east) > 2 or abs(self.position_North[-1]-pos_north) > 2:
+            #Going too fast
+            raise Exception("moved too fast")
+            return False
+        
+        self.time_step += 1
+
+        self.position_East.append(pos_east)
+        self.position_North.append(pos_north)
+
+        self.perform_read()
+
