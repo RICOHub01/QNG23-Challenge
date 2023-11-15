@@ -127,7 +127,7 @@ def serialize_array(array):
 
 # 
 def survey_flight(filename, scenario):
-    dr = Drone_Sim(scenario, filename)
+    dr = Drone_Sim(filename, scenario)
     survey_path(dr)
     #shape array for 2d plotting
     bx = np.reshape(dr.b_east_drone, (101, 101)).T
@@ -181,7 +181,7 @@ class Drone_Sim: # Capitalised to meet style guidelines.
     
     Dataset = '\dataset_location.h5'
 
-    def __init__(self, scenario_number, dataset_location): #changed to regular init Class, set dataset_location to optional
+    def __init__(self, dataset_location, scenario_number): #changed to regular init Class, set dataset_location to optional
         # INSTANCE VARIABLES 
         (self.data, self.mine_dipole) = load_dataset(dataset_location,scenario_number) # loads specific scenario data
         self.position_East = [0] # sets starting east position
