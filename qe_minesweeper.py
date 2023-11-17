@@ -154,6 +154,7 @@ def survey_path(drone):
             drone.move(i,j)
 
 # For brute force re-organisation
+# TODO Average data if sharing the same point.
 def reorg_dronedata(drone):
     east = np.empty((101,101), dtype=float)
     north = np.empty((101,101), dtype=float)

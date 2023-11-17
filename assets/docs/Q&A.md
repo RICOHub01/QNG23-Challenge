@@ -18,4 +18,6 @@ Document referenced by Marcus at the end of Q&A Session 2 - [Magnetic field of a
 
 # Question and Answers Session 3 - 15 Nov 2023
 
-You can attend the session on Microsoft Teams [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_OGRiYzJlY2EtNjMxYi00MDhmLTkzMTYtZWUwMDU5MmMxZTg2%40thread.v2/0?context=%7b%22Tid%22%3a%22fc624e19-3eb5-4bbb-87ae-297b8e4ba48d%22%2c%22Oid%22%3a%22b289bda4-4d17-4592-9e22-17a7e487686b%22%7d)
+You can watch the [recording here](https://vimeo.com/885456849/1a8dac6deb?share=copy).
+
+[![Link](https://videoapi-muybridge.vimeocdn.com/animated-thumbnails/image/01a6c036-3f07-4c61-9c70-54d5bd5b2cfa.gif?ClientID=vimeo-core-prod&Date=1700184981&Signature=369d815c1493742269630272a60c33493ffb313b)](https://vimeo.com/885456849/1a8dac6deb?share=copy)
