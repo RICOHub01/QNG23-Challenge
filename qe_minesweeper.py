@@ -31,7 +31,6 @@ def load_answers(filename,scenario):
     return mine_positons
 
 def submit_answers(mine_estimates, stage, authkey):
-
     mine_estimates = serialize_array(mine_estimates)
     #creates JSON form data for HTTP request
     payload = {"answers":mine_estimates}
@@ -109,7 +108,10 @@ def plot_scenario(source, scenario):
     plot_data(data, mine_positions)
 
 def post_to_server(payload, ref=""):
-        return requests.post(URL+ref, json=payload, headers={'QeC':QEC})
+    return requests.post(URL+ref, json=payload, headers={'QeC':QEC})
+
+def get_from_server(payload, ref=""):
+    return requests.get(URL+ref, json=payload, headers={'QEC':QEC})
 
 def serialize_array(array):
     print(array)
@@ -128,6 +130,20 @@ def serialize_array(array):
 # 
 def survey_flight(filename, scenario):
     dr = Drone_Sim(filename, scenario)
+    survey_path(dr)
+    #shape array for 2d plotting
+    bx = np.reshape(dr.b_east_drone, (101, 101)).T
+    by = np.reshape(dr.b_north_drone, (101, 101)).T
+    bz = np.reshape(dr.b_up_drone, (101, 101)).T
+    #flip every 2nd row (raster back and forth flight)
+    bx[:,1::2] = bx[::-1, 1::2]
+    by[:,1::2] = by[::-1, 1::2]
+    bz[:,1::2] = bz[::-1, 1::2]
+    return [bx, by, bz]
+
+# 
+def survey_flight_online(token, scenario):
+    dr = Drone_Sim_Online(token, scenario)
     survey_path(dr)
     #shape array for 2d plotting
     bx = np.reshape(dr.b_east_drone, (101, 101)).T
@@ -225,3 +241,73 @@ class Drone_Sim: # Capitalised to meet style guidelines.
 
         self.perform_read()
 
+########################
+### ONLINE DRONE SIM ###
+########################
+
+class Drone_Sim_Online: # Capitalised to meet style guidelines.
+    # CLASS VARIABLES
+    start_Position_East = [0] # Determine where on Eastings the drone starts
+    start_Position_North = [0] # Determine where on Northings the drone starts
+    start_time_step = 0 # Determine what timestep the drone starts on
+    
+    Borders =[0,101] # Set borders of the area
+    max_velovity = 0.283*10 # maximum velocity permitted per timestep
+
+    token = ""
+
+    def __init__(self, token, scenario_number): #changed to regular init Class, set dataset_location to optional
+        # INSTANCE VARIABLES 
+        self.token = token
+        self.scenario = scenario_number
+        self.ref = '3/'+self.token+'/'+str(self.scenario)
+        # LOAD FROM ONLINE
+        self.server_check()
+
+    def perform_read(self):
+        payload = {"move":[self.position_East[-1],self.position_North[-1]]}
+        response = post_to_server(payload, self.ref)
+        data = response.json()
+        b_noise = data['b_noise']
+        self.b_east_drone.append(b_noise[0])
+        self.b_north_drone.append(b_noise[1]) # Get the noisified reading for north
+        self.b_up_drone.append(b_noise[2]) # Get the noisified reading for up
+        
+    def move(self, pos_east, pos_north):
+        if pos_east > self.Borders[1] or pos_east < self.Borders[0] or pos_north > self.Borders[1] or pos_north < self.Borders[0]:
+            #position outside bounds
+            raise Exception("position exceeds bounds")
+            return False
+        if pos_east%1>0 or pos_north%1>0:
+            #position not an integer
+            raise Exception("position exceeds bounds")
+            return False 
+        if abs(self.position_East[-1]-pos_east) > 2 or abs(self.position_North[-1]-pos_north) > 2:
+            #Going too fast
+            raise Exception("moved too fast")
+            return False
+        
+        # ONLINE ACTIONS OCCUR HERE
+        self.perform_read()
+
+        self.time_step += 1
+        self.position_East.append(pos_east)
+        self.position_North.append(pos_north)
+        # LOCAL ACTIONS FOR SPEED END HERE
+
+    def server_check(self):
+        response = get_from_server({},('3/'+self.token+'/'+str(self.scenario)))
+        data = response.json()
+        self.position_East = data['pos_east'] # sets starting east position
+        self.position_North = data['pos_north'] # sets starting north position
+        self.time_step = data['time_step'] # set time step for scenario to 0
+        self.b_east_drone = data['b_east'] # Array for tracking reading at point in East
+        self.b_north_drone = data['b_north'] # Array for tracking reading at point in North 
+        self.b_up_drone = data['b_up'] # Array for tracking reading at point in Up
+        self.mine_dipole = data['mine_dipole']
+        print('Online Drone ' + str(self.scenario) + ' is loaded')
+        print("The Dipole is: ", self.mine_dipole)
+        # CONSIDER SEPARATE CALLS FOR B_EAST, B_NORTH, B_UP to keep calls small
+
+    def get_current_pos(self):
+        return [self.position_East[-1],self.position_North[-1]]
