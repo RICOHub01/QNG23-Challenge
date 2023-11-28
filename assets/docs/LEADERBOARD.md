@@ -6,16 +6,16 @@
 
 ## Competition Total
 
-| Place | Team | Score | Stage 1 | Stage 2 |
-|---|---|---|---|---|
-| 1 | Minefield Recon Team | 13 | +3 | +10 |
-| 2 | Green & Grey | 9 | +5 | +4 |
-| 3 | DNE Cyber | 6 | DNF | +6 |
-| 4 | DeepNeural AI | 4 | +2 | +2 |
-| 5 | QuantumGuard | 1 | +1 | +0 |
-| 6 | Transitional Transuburbia Telepaths | 0 | +0 | +0 |
-| - | Tennis | - | DNF | DNF |
-| - | Boeing Defence Australia Maker Space | - | DNF | DNF |
+| Place | Team | Score | Stage 1 | Stage 2 | Stage 3 |
+|---|---|---|---|---|---|
+| 1 | Minefield Recon Team | 28 | +3 | +10 | +15 |
+| 2 | Green & Grey |  15 | +5 | +4 | +6 |
+| 2 | DNE Cyber | 15 | DNF | +6 | +9 |
+| 4 | DeepNeural AI | 4 | +2 | +2 | DNF |
+| 5 | QuantumGuard | 1 | +1 | +0 | DNF |
+| 6 | Transitional Transuburbia Telepaths | 0 | +0 | +0 | DNF |
+| - | Tennis | - | DNF | DNF | DNF |
+| - | Boeing Defence Australia Maker Space | - | DNF | DNF | DNF |
 
 
 
@@ -47,7 +47,6 @@
 
 | Place | Team | Score |
 |---|---|---|
-| 1 | - | 15 |
-| 2 | - | 9 |
-| 3 | - | 6 |
-| 4 | - | 3 |
+| 1 | Minefield Recon Team | 15 |
+| 2 | DNE Cyber | 9 |
+| 3 | Green & Grey | 6 |
