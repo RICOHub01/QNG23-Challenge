@@ -31,9 +31,10 @@ The following document is the hub that will contain:
     - [Stage 1](/STAGE-1.md) - 12pm Thursday, 26 October to 12pm Saturday, 28 October
     - [Stage 2](/STAGE-2.md) - 12pm Thursday, 9 November to 12pm Saturday, 11 November
     - [Stage 3](/STAGE-3.md)- 1pm Thursday, 23 November to 1pm Saturday, 25 November
+    - [PitchFest](/PITCHFEST.md) - 12pm to 2pm Tuesday, 5th December 
 
 # Technical Guidance
-
+s
 Python Version Required: `3.9+` 
 
 ## Installation
